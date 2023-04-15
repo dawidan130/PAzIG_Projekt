@@ -1,0 +1,446 @@
+{
+  "Pytania": {
+    "Całe ciało": [
+      {
+        "Pytanie": "Najsilniejszy mięsień w ciele człowieka to?",
+        "a": "Dwugłowy ramienny",
+        "b": "Czworogłowy uda",
+        "c": "Pośladkowy wielki",
+        "d": "Trójgłowy ramienny",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Przybliżona rozdzielczość oka to?",
+        "a": "256 megapikseli",
+        "b": "576 megapikseli",
+        "c": "368 megapikseli",
+        "d": "724 megapikseli",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Pole widzenia oczu wynosi około?",
+        "a": "160 stopni",
+        "b": "170 stopni",
+        "c": "180 stopni",
+        "d": "190 stopni",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Ile moczu przeciętnie produkują nerki w ciągu doby?",
+        "a": "0,8 litra",
+        "b": "1 litr",
+        "c": "1,2 litra",
+        "d": "1,5 litra",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Standardowe pH kwasu żołądkowego wynosi?",
+        "a": "1 - 3,5",
+        "b": "3,5 - 5",
+        "c": "5 - 7",
+        "d": "Powyżej 7",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Ile włosów jest u przeciętnego człowieka na głowie?",
+        "a": "100 - 150 tysięcy",
+        "b": "150 - 250 tysięcy",
+        "c": "250 - 500 tysięcy",
+        "d": "Blisko milion",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Jaki jest zakres słuchu człowieka?",
+        "a": "20 Hz - 20.000 Hz",
+        "b": "16 Hz - 16.000 Hz",
+        "c": "10 Hz - 10.000 Hz",
+        "d": "5.000 - to 15.000 Hz",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Ile kubków smakowych posiada człowiek?",
+        "a": "Mniej niż tysiąc",
+        "b": "1 - 2 tysięcy",
+        "c": "2 - 4 tysięcy",
+        "d": "Blisko koło 10 tysięcy",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Usain Bolt - najszybszy człowiek na ziemi rekordowo biegł z prędkością?",
+        "a": "41,3 km/h",
+        "b": "43,1 km/h",
+        "c": "44,7 km/h",
+        "d": "46,4 km/h",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Najwyższy człowiek na ziemi mierzył?",
+        "a": "2,21 m",
+        "b": "2,34 m",
+        "c": "2,57 m",
+        "d": "2,72 m",
+        "odp_pop": "d"
+      }
+    ],
+    "Układ kostny": [
+      {
+        "Pytanie": "Z ilu kości składa się układ kostny człowieka?",
+        "a": "106",
+        "b": "206",
+        "c": "200",
+        "d": "306",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Największa kość w ciele człowieka to?",
+        "a": "Kość udowa",
+        "b": "Kość piszczelowa",
+        "c": "Kość strzałkowa",
+        "d": "Kość ramienna",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Najmniejsza kość w ciele człowieka to?",
+        "a": "Młoteczek",
+        "b": "Kowadełko",
+        "c": "Kość czworoboczna mniejsza",
+        "d": "Strzemiączko",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Ile kręgów wchodzi w skład kręgosłupa?",
+        "a": "29 - 30",
+        "b": "31 - 32",
+        "c": "33 - 34",
+        "d": "35 - 36",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Jaka jest typowa twardość kości w skali Vickersa?",
+        "a": "80 - 120 HV",
+        "b": "120 - 160 HV",
+        "c": "160 - 200 HV",
+        "d": "40 - 80 HV",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Ile par żeber wchodzi w skład klatki piersiowej człowieka?",
+        "a": "10",
+        "b": "11",
+        "c": "12",
+        "d": "14",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Z czego głownie składają się kości?",
+        "a": "Sole mineralne",
+        "b": "Szpik kostny",
+        "c": "Wapń",
+        "d": "Kolagen",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Ile % masy całkowitej stanowi szkielet u zdrowego człowieka?",
+        "a": "10%",
+        "b": "15%",
+        "c": "20%",
+        "d": "25%",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Ile w przybliżeniu waży czaszka człowieka?",
+        "a": "1 kg",
+        "b": "1,1 kg",
+        "c": "1,2 kg",
+        "d": "1,3 kg",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Z ilu kości składa się dłoń człowieka?",
+        "a": "23",
+        "b": "26",
+        "c": "27",
+        "d": "24",
+        "odp_pop": "c"
+      }
+    ],
+    "Układ krwionośny": [
+      {
+        "Pytanie": "Ile krwi średnio pompuje serce w ciągu 24 godzin?",
+        "a": "2.000 litrów",
+        "b": "5.000 litrów",
+        "c": "1.000 litrów",
+        "d": "7.000 litrów",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Zaznacz prawidłową odpowiedź:",
+        "a": "Żyły to naczynia krwionośne koloru czerwonego",
+        "b": "Krew odtlenowana ma jasnoczerwoną barwę",
+        "c": "Funkcją żył jest transport odtlenowanej krwi",
+        "d": "Wszystkie żyły posiadają zastawki",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Szacunkowo sumaryczna długość wszystkich naczyń krwionośnych wynosi?",
+        "a": "10 tysięcy kilometrów",
+        "b": "1.000 kilometrów",
+        "c": "12,5 tysiąca kilometrów",
+        "d": "100 tysięcy kilometrów",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Ile litrów krwi posiada średnio człowiek?",
+        "a": "10 litrów",
+        "b": "7 - 8 litrów",
+        "c": "4 - 6 litrów",
+        "d": "3 - 4 litrów",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Które z niżej wymienionych żył posiadają zastawki?",
+        "a": "Żyły udowe",
+        "b": "Żyły płucne",
+        "c": "Żyły biodrowe",
+        "d": "Żyły stopy",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Jaki % masy ciała stanowi krew?",
+        "a": "7 - 8%",
+        "b": "2 - 3%",
+        "c": "5 - 6%",
+        "d": "4 - 5%",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Najwęższe naczynie krwionośne ma średnicę?",
+        "a": "11 mikrometrów",
+        "b": "7 mikrometrów",
+        "c": "23 miktometrów",
+        "d": "3 mikrometrów",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "U noworodka serce tworzy się w?",
+        "a": "1 tygodniu ciążyy",
+        "b": "5-7 tygodniu ciąży",
+        "c": "2-3 tygodniu ciąży",
+        "d": "3-5 tygodniu ciąży",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "W ciągu dnia serce kurczy się około?",
+        "a": "50.000 razy",
+        "b": "100.000 razy",
+        "c": "150.000 razy",
+        "d": "30.000 razy",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Serce waży około?",
+        "a": "500 - 550 gram",
+        "b": "750 - 800 gram",
+        "c": "200 - 250 gram",
+        "d": "300 - 350 gram",
+        "odp_pop": "d"
+      }
+    ],
+    "Układ nerwowy": [
+      {
+        "Pytanie": "Komórka nerwowa to inaczej?",
+        "a": "Neuron",
+        "b": "Dendryt",
+        "c": "Akson",
+        "d": "Synapsa",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "W neuronach sygnał odbierany jest przez?",
+        "a": "Jądra",
+        "b": "Dendryty",
+        "c": "Synapsy",
+        "d": "Aksony",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "W neuronach sygnał wysyłany jest przez?",
+        "a": "Jądra",
+        "b": "Dendryty",
+        "c": "Synapsy",
+        "d": "Aksony",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Z ilu neuronów zbudowany jest mózg człowieka?",
+        "a": "100 tysięcy",
+        "b": "100 milionów",
+        "c": "100 miliardów",
+        "d": "100 bilionów",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Z jaką prędkością poruszają się sygnały nerwowe?",
+        "a": "50 m/s",
+        "b": "100 m/s",
+        "c": "150 m/s",
+        "d": "200 m/s",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Ile waży mózg człowieka?",
+        "a": "2,5 kg",
+        "b": "2 kg",
+        "c": "1,5 kg",
+        "d": "0,5 kg",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Ile % energii całego organizmu pochłania mózg?",
+        "a": "20%",
+        "b": "25%",
+        "c": "30%",
+        "d": "35%",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Przeciętnie w ciągu dnia człowiek doświadcza około?",
+        "a": "100 tysięcy myśli",
+        "b": "70 tysięcy myśli",
+        "c": "150 tysięcy myśli",
+        "d": "50 tysięcy myśli",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "W ciągu jednej sekundy do mózgu trafia około?",
+        "a": "50 GB danych",
+        "b": "10 GB danych",
+        "c": "500 MB danych",
+        "d": "100 MB danych",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Pełną dojrzałość ludzki mózg osiąga po?",
+        "a": "15 roku życia",
+        "b": "25 roku życia",
+        "c": "18 roku życia",
+        "d": "30 roku życia",
+        "odp_pop": "b"
+      }
+    ],
+    "Układ oddechowy": [
+      {
+        "Pytanie": "Człowiek średnio w ciągu doby wykonuje około?",
+        "a": "20.000 oddechów",
+        "b": "30.000 oddechów",
+        "c": "25.000 oddechów",
+        "d": "15.000 oddechów",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Ile wynosi pojemność całkowita płuc?",
+        "a": "7,5 - 8 litrów",
+        "b": "5 - 5,5 litra",
+        "c": "3 - 3,5 litra",
+        "d": "4 - 4,5 litra",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Które płuco jest większe?",
+        "a": "Lewe",
+        "b": "Prawe",
+        "c": "Oba są takie same",
+        "d": "Różnie - w zależności od człowieka",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "Wdychając powietrze do płuc trafia 21% tlenu, w wydychanym powietrzu zostaje ile % tlenu?",
+        "a": "19%",
+        "b": "18%",
+        "c": "17%",
+        "d": "16%",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Ile wynosi rekord w najdłużej wstrzymanym oddechu?",
+        "a": "42 minuty",
+        "b": "30 minut",
+        "c": "16 minut",
+        "d": "24 minuty",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "U przeciętnego człowieka mózg zaczyna obumierać po ilu minutach bez tlenu?",
+        "a": "2 minuty",
+        "b": "3 minuty",
+        "c": "4 minuty",
+        "d": "5 minut",
+        "odp_pop": "b"
+      },
+      {
+        "Pytanie": "W pęcherzykach płucny następuje?",
+        "a": "Filtracja powietrza",
+        "b": "Magazynowanie tlenu",
+        "c": "Wymiana tlenu i dwutlenku węgla z krwinką",
+        "d": "Żadna z odpowiedzi nie jest prawidłowa",
+        "odp_pop": "c"
+      },
+      {
+        "Pytanie": "Szacowana liczba pęcherzyków płucnych u człowieka to?",
+        "a": "300 - 500 milonów ",
+        "b": "100 - 300 milonów",
+        "c": "Mniej niż 100 milionów",
+        "d": "Więcej niż 500 milionów",
+        "odp_pop": "a"
+      },
+      {
+        "Pytanie": "Podczas kichnięcia powietrze wylatujące z płuc osiąga prędkość?",
+        "a": "30 km/h",
+        "b": "200 km/h",
+        "c": "50 km/h",
+        "d": "100 km/h",
+        "odp_pop": "d"
+      },
+      {
+        "Pytanie": "Zaznacz prawidłowe stwierdzenie:",
+        "a": "Płuca są jedynym narządem zdolnym do samoregeneracji",
+        "b": "W płucach występuje ponad 500 milonów pęcherzyków płucnych",
+        "c": "Płuca są zbudowane z mięśni",
+        "d": "Żadna z odpowiedzi nie jest prawidłowa",
+        "odp_pop": "a"
+      }
+    ]
+  },
+  "Wyniki": {
+    "Całe ciało": [
+      {
+        "Nick": "",
+        "Score": 0
+      }
+    ],
+    "Układ kostny": [
+      {
+        "Nick": "",
+        "Score": 0
+      }
+    ],
+    "Układ krwionośny": [
+      {
+        "Nick": "",
+        "Score": 0
+      }
+    ],
+    "Układ nerwowy": [
+      {
+        "Nick": "",
+        "Score": 0
+      }
+    ],
+    "Układ oddechowy": [
+      {
+        "Nick": "",
+        "Score": 0
+      }
+    ]
+  }
+}
