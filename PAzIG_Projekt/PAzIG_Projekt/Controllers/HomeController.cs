@@ -8,6 +8,11 @@ namespace PAzIG_Projekt.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult MainPage()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();
