@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <style>
+        :root {
+            --kolor: @ViewBag.kolor;
+        }
+    </style>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <title>Quiz - @ViewBag.nazwa</title>
+</head>
+<body class="tlo_ogolne" style="text-align: center; margin: 0 auto">
+    <div class="logo_ogolne animate">
+        <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")">
+    </div>
+    <div id="tresc">
+        <p class="napis_animowany" id="tresc_pytania"> </p>
+    </div>
+
+    <div class="div_rzad_odp">
+        <div class="div_odp" id="dA">
+            <p id="A"> </p>
+        </div>
+        <div class="div_odp" id="dB">
+            <p id="B"> </p>
+        </div>
+        <div class="div_odp" id="dC">
+            <p id="C"> </p>
+        </div>
+        <div class="div_odp" id="dD">
+            <p id="D"> </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    let wszystkie_pytania = [];
+    let x = 0;
+    GetPytania();
+    Start();
+    function Start() {
+        let counter = 3;
+        let countdown = setInterval(function () {
+            if (counter === 0) {
+                document.getElementById("tresc_pytania").innerHTML = "START!";
+                clearInterval(countdown);
+                let odliczanie = setInterval(function () {
+                    document.getElementById("tresc_pytania").innerHTML = wszystkie_pytania[0].treść;
+                    document.getElementById("A").innerHTML = wszystkie_pytania[0].a;
+                    document.getElementById("B").innerHTML = wszystkie_pytania[0].b;
+                    document.getElementById("C").innerHTML = wszystkie_pytania[0].c;
+                    document.getElementById("D").innerHTML = wszystkie_pytania[0].d;
+
+                    document.getElementById("dA").style.visibility = "visible";
+                    document.getElementById("dB").style.visibility = "visible";
+                    document.getElementById("dC").style.visibility = "visible";
+                    document.getElementById("dD").style.visibility = "visible";
+                    clearInterval(odliczanie);
+                }, 1000);
+            }
+            else {
+                document.getElementById("tresc_pytania").innerHTML = counter;
+            }
+            counter--;
+        }, 1000);
+    };
+    function GetPytania() {
+        nazwa = "@ViewBag.nazwa";
+        $.ajax({
+            method: 'GET',
+            data: { nazwa: nazwa },
+            url: '/Home/GetPytania',
+            success: function (result) {
+                for (let i = 0; i < result.length; i++) {
+                    wszystkie_pytania.push(result[i])
+                }
+            },
+        });
+    }
+    
+</script>

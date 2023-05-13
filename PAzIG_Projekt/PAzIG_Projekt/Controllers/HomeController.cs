@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using PAzIG_Projekt.Models;
+using PAzIG_Projekt.Attributes;
 
 namespace PAzIG_Projekt.Controllers
 {
@@ -13,23 +18,48 @@ namespace PAzIG_Projekt.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult QuizPage(string nazwa)
         {
-            return View();
+            ViewBag.nazwa = nazwa;
+            switch (nazwa)
+            {
+                case "Układ krwionośny":
+                    ViewBag.kolor = "#F21A1D";
+                    break;
+                case "Układ oddechowy":
+                    ViewBag.kolor = "#5CE5D5";
+                    break;
+                case "Układ nerwowy":
+                    ViewBag.kolor = "#7FFF00";
+                    break;
+                case "Układ kostny":
+                    ViewBag.kolor = "#B76CFD";
+                    break;
+                case "Całe ciało":
+                    ViewBag.kolor = "#FFFF00";
+                    break;
+            }
+            return this.View();
         }
 
-        public ActionResult About()
+        IFirebaseConfig data = new FirebaseConfig
         {
-            ViewBag.Message = "Your application description page.";
+            BasePath = "https://pazig-78445-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
 
-            return View();
-        }
+        IFirebaseClient client;
 
-        public ActionResult Contact()
+        [JsonNetFilter]
+        public ActionResult GetPytania(string nazwa)
         {
-            ViewBag.Message = "Your contact page.";
+            client = new FireSharp.FirebaseClient(data);
 
-            return View();
+            List<Pytanie> lista_pytan = new List<Pytanie>();
+
+            var get = client.Get("Pytania/" + nazwa + "/");
+            lista_pytan = get.ResultAs<List<Pytanie>>();
+
+            return Json(lista_pytan, JsonRequestBehavior.AllowGet);
         }
     }
 }

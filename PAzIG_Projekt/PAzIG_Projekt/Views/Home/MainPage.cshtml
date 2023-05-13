@@ -39,20 +39,20 @@
     </div>
 
     <div class="div_rzad">
-        <div class="logo_tlo_mniejsze" onclick="console.log(true)">
-            <img src="~/Images/serce.png">
+        <div class="logo_tlo_mniejsze" onclick="Start('Układ krwionośny')">
+            <img src="~/Images/Układ krwionośny.png">
+        </div>
+        <div class="logo_tlo_mniejsze" onclick="Start('Układ oddechowy')">
+            <img src="~/Images/Układ oddechowy.png">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/pluca.png">
+            <img src="~/Images/Układ nerwowy.png" onclick="Start('Układ nerwowy')">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/mozg.png">
+            <img src="~/Images/Układ kostny.png" onclick="Start('Układ kostny')">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/kosci2.png">
-        </div>
-        <div class="logo_tlo_mniejsze">
-            <img src="~/Images/klata.png">
+            <img src="~/Images/Całe ciało.png" onclick="Start('Całe ciało')">
         </div>
         <div class="logo_tlo_mniejsze">
             <img src="~/Images/chlopek.png">
@@ -61,3 +61,11 @@
     
 </body>
 </html>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    function Start(nazwa) {
+        window.location.href = '/Home/QuizPage/?nazwa=' + nazwa;
+    }
+</script>
