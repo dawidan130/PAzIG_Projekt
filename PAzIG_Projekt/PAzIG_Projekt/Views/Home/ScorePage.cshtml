@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        :root {
+            --kolor: @ViewBag.kolor;
+            --animacja: @ViewBag.animacja;
+            --czasanimacji: @ViewBag.czasanimacji;
+            --timing: @ViewBag.timing;
+        }
+    </style>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <title>Quiz - @ViewBag.nazwa</title>
+</head>
+<body class="tlo_ogolne" style="text-align: center; margin: 0 auto">
+    <div class="logo_ogolne animate">
+        <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
+    </div>
+    <div id="tresc">
+        <p class="napis_animowany" id="tresc_pytania"> Twój wynik to: @ViewBag.wynik/5</p>
+    </div>
+</body>
+</html>

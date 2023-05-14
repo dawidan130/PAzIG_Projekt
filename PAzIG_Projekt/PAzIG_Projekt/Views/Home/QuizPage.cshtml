@@ -10,6 +10,9 @@
     <style>
         :root {
             --kolor: @ViewBag.kolor;
+            --animacja: @ViewBag.animacja;
+            --czasanimacji: @ViewBag.czasanimacji;
+            --timing: @ViewBag.timing;
         }
     </style>
     <link rel="stylesheet" href="~/Content/Site.css">
@@ -17,23 +20,27 @@
 </head>
 <body class="tlo_ogolne" style="text-align: center; margin: 0 auto">
     <div class="logo_ogolne animate">
-        <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")">
+        <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
     </div>
     <div id="tresc">
         <p class="napis_animowany" id="tresc_pytania"> </p>
     </div>
 
+    <div id="kontyner">
+
+    </div>
+
     <div class="div_rzad_odp">
-        <div class="div_odp" id="dA">
+        <div class="div_odp" id="dA" onclick="Odpowiedz('a')">
             <p id="A"> </p>
         </div>
-        <div class="div_odp" id="dB">
+        <div class="div_odp" id="dB" onclick="Odpowiedz('b')">
             <p id="B"> </p>
         </div>
-        <div class="div_odp" id="dC">
+        <div class="div_odp" id="dC" onclick="Odpowiedz('c')">
             <p id="C"> </p>
         </div>
-        <div class="div_odp" id="dD">
+        <div class="div_odp" id="dD" onclick="Odpowiedz('d')">
             <p id="D"> </p>
         </div>
     </div>
@@ -47,6 +54,7 @@
     let x = 0;
     GetPytania();
     Start();
+
     function Start() {
         let counter = 3;
         let countdown = setInterval(function () {
@@ -54,16 +62,7 @@
                 document.getElementById("tresc_pytania").innerHTML = "START!";
                 clearInterval(countdown);
                 let odliczanie = setInterval(function () {
-                    document.getElementById("tresc_pytania").innerHTML = wszystkie_pytania[0].treść;
-                    document.getElementById("A").innerHTML = wszystkie_pytania[0].a;
-                    document.getElementById("B").innerHTML = wszystkie_pytania[0].b;
-                    document.getElementById("C").innerHTML = wszystkie_pytania[0].c;
-                    document.getElementById("D").innerHTML = wszystkie_pytania[0].d;
-
-                    document.getElementById("dA").style.visibility = "visible";
-                    document.getElementById("dB").style.visibility = "visible";
-                    document.getElementById("dC").style.visibility = "visible";
-                    document.getElementById("dD").style.visibility = "visible";
+                    RozpocznijQuiz();
                     clearInterval(odliczanie);
                 }, 1000);
             }
@@ -73,6 +72,7 @@
             counter--;
         }, 1000);
     };
+
     function GetPytania() {
         nazwa = "@ViewBag.nazwa";
         $.ajax({
@@ -85,6 +85,62 @@
                 }
             },
         });
-    }
-    
+    };
+
+    let countdown;
+    let liczba_pytan = 0;
+    let odpowiedzi_user = [];
+    let odpowiedzi_pop = [];
+
+    function RozpocznijQuiz() {
+        if (liczba_pytan < 5) {
+            if (liczba_pytan === 0) {
+                document.getElementById("dA").style.visibility = "visible";
+                document.getElementById("dB").style.visibility = "visible";
+                document.getElementById("dC").style.visibility = "visible";
+                document.getElementById("dD").style.visibility = "visible";
+            }
+
+            var rand = Math.floor(Math.random() * wszystkie_pytania.length);
+
+            document.getElementById("kontyner").innerHTML = '<div class="pasek animacja_paska" id="pasek"><div></div></div>'
+
+            document.getElementById("tresc_pytania").innerHTML = wszystkie_pytania[rand].treść;
+            document.getElementById("A").innerHTML = wszystkie_pytania[rand].a;
+            document.getElementById("B").innerHTML = wszystkie_pytania[rand].b;
+            document.getElementById("C").innerHTML = wszystkie_pytania[rand].c;
+            document.getElementById("D").innerHTML = wszystkie_pytania[rand].d;
+
+            odpowiedzi_pop.push(wszystkie_pytania[rand].odp_pop);
+            wszystkie_pytania.splice(rand, 1);
+            liczba_pytan++;
+        }
+        else {
+            clearInterval(countdown);
+            Wyniki();
+        }
+
+        countdown = setInterval(function () {
+            if (odpowiedzi_user.length < liczba_pytan) {
+                Odpowiedz('');
+            }
+        }, 30000);
+    };
+
+    function Odpowiedz(odp) {
+        odpowiedzi_user.push(odp);
+        clearInterval(countdown);
+        RozpocznijQuiz();
+    };
+
+    function Wyniki() {
+        let wynik = 0;
+        for (let i = 0; i < 5; i++) {
+             if (odpowiedzi_user[i] === odpowiedzi_pop[i]) {
+                 wynik++;
+             }
+        }
+        window.location.href = '/Home/ScorePage/?nazwa=' + "@ViewBag.nazwa" + '&wynik=' + wynik;
+    };
+
 </script>

@@ -77,6 +77,10 @@ textarea {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    animation-name: var(--animacja);
+    animation-duration: var(--czasanimacji);
+    animation-iteration-count: infinite;
+    animation-timing-function: var(--timing)
 }
 
 .logo_ogolne:hover {
@@ -96,6 +100,29 @@ textarea {
 .napis_animowany {
     text-align: center;
     font-size: 50px;
+}
+
+.pasek {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+    margin: 0 auto;
+}
+
+.pasek div{
+    width: 1250px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: var(--kolor);
+    border: solid 1px var(--kolor);
+    border-color: var(--kolor);
+    box-shadow: 0 0 15px var(--kolor);
+}
+
+.animacja_paska {
+    animation: kurczenie 30s forwards;
+    animation-timing-function: linear;
 }
 
 .animate {
@@ -126,8 +153,8 @@ textarea {
 
 .div_odp {
     background-color: #333333;
-    height: 100px;
-    width: 500px;
+    height: 150px;
+    width: 600px;
     text-align: center;
     color: var(--kolor);
     border-radius: 15px;
@@ -138,10 +165,16 @@ textarea {
     align-items: center;
     justify-content: center;
     visibility: hidden;
+    transition: box-shadow 1s ease-in-out;
+}
+
+.div_odp:hover {
+    box-shadow: 0 0 45px var(--kolor);
 }
 
 .div_odp p {
     font-size: 40px;
+    max-width: 590px;
 }
 
 .div_rzad_napis {
@@ -336,11 +369,11 @@ textarea {
 }
 
 @keyframes rotate {
-    from {
+    0% {
         transform: rotate(0deg);
     }
 
-    to {
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -386,5 +419,15 @@ textarea {
 
     100% {
         transform: translate(0%, 0%);
+    }
+}
+
+@keyframes kurczenie {
+    0% {
+        width: 1250px;
+    }
+
+    100% {
+        width: 0px;
     }
 }

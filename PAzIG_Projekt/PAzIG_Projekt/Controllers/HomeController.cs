@@ -25,18 +25,73 @@ namespace PAzIG_Projekt.Controllers
             {
                 case "Układ krwionośny":
                     ViewBag.kolor = "#F21A1D";
+                    ViewBag.animacja = "pulsate";
+                    ViewBag.czasanimacji = "1.5s";
+                    ViewBag.timing = "unset";
                     break;
                 case "Układ oddechowy":
                     ViewBag.kolor = "#5CE5D5";
+                    ViewBag.animacja = "breath";
+                    ViewBag.czasanimacji = "4s";
+                    ViewBag.timing = "unset";
                     break;
                 case "Układ nerwowy":
                     ViewBag.kolor = "#7FFF00";
+                    ViewBag.animacja = "translate";
+                    ViewBag.czasanimacji = "4s";
+                    ViewBag.timing = "unset";
                     break;
                 case "Układ kostny":
                     ViewBag.kolor = "#B76CFD";
+                    ViewBag.animacja = "rotate";
+                    ViewBag.czasanimacji = "10s";
+                    ViewBag.timing = "linear";
                     break;
                 case "Całe ciało":
                     ViewBag.kolor = "#FFFF00";
+                    ViewBag.animacja = "walk";
+                    ViewBag.czasanimacji = "3s";
+                    ViewBag.timing = "unset";
+                    break;
+            }
+            return this.View();
+        }
+
+        public ActionResult ScorePage(string nazwa, int wynik)
+        {
+            ViewBag.nazwa = nazwa;
+            ViewBag.wynik = wynik;
+            switch (nazwa)
+            {
+                case "Układ krwionośny":
+                    ViewBag.kolor = "#F21A1D";
+                    ViewBag.animacja = "pulsate";
+                    ViewBag.czasanimacji = "1.5s";
+                    ViewBag.timing = "unset";
+                    break;
+                case "Układ oddechowy":
+                    ViewBag.kolor = "#5CE5D5";
+                    ViewBag.animacja = "breath";
+                    ViewBag.czasanimacji = "4s";
+                    ViewBag.timing = "unset";
+                    break;
+                case "Układ nerwowy":
+                    ViewBag.kolor = "#7FFF00";
+                    ViewBag.animacja = "translate";
+                    ViewBag.czasanimacji = "4s";
+                    ViewBag.timing = "unset";
+                    break;
+                case "Układ kostny":
+                    ViewBag.kolor = "#B76CFD";
+                    ViewBag.animacja = "rotate";
+                    ViewBag.czasanimacji = "10s";
+                    ViewBag.timing = "linear";
+                    break;
+                case "Całe ciało":
+                    ViewBag.kolor = "#FFFF00";
+                    ViewBag.animacja = "walk";
+                    ViewBag.czasanimacji = "3s";
+                    ViewBag.timing = "unset";
                     break;
             }
             return this.View();
