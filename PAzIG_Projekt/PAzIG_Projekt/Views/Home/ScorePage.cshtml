@@ -22,8 +22,14 @@
     <div class="logo_ogolne animate">
         <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
     </div>
-    <div id="tresc">
-        <p class="napis_animowany" id="tresc_pytania"> Twój wynik to: @ViewBag.wynik/5</p>
+    <div class="wynik">
+        <p> Twój wynik to: </p>
+        <p> @ViewBag.wynik na 5 punktów, czas: @(ViewBag.czas.ToString()+"s")</p>
+    </div>
+
+    <div class="emotka">
+        <img src="~/Faces/@ViewBag.nazwa/@(ViewBag.wynik + ".png")">
     </div>
 </body>
 </html>
+

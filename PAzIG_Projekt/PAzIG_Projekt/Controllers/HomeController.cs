@@ -57,10 +57,16 @@ namespace PAzIG_Projekt.Controllers
             return this.View();
         }
 
-        public ActionResult ScorePage(string nazwa, int wynik)
+        public ActionResult ScorePage(string nazwa, int wynik, double czas)
         {
+            if(czas > 150000)
+            {
+                czas = 150000;
+            }
+
             ViewBag.nazwa = nazwa;
             ViewBag.wynik = wynik;
+            ViewBag.czas = czas/1000;
             switch (nazwa)
             {
                 case "Układ krwionośny":

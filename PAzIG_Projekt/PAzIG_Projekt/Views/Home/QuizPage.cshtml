@@ -23,7 +23,7 @@
         <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
     </div>
     <div id="tresc">
-        <p class="napis_animowany" id="tresc_pytania"> </p>
+        <p class="napis_pytanie" id="tresc_pytania"> </p>
     </div>
 
     <div id="kontyner">
@@ -55,6 +55,9 @@
     GetPytania();
     Start();
 
+    var start;
+    var koniec;
+
     function Start() {
         let counter = 3;
         let countdown = setInterval(function () {
@@ -62,6 +65,7 @@
                 document.getElementById("tresc_pytania").innerHTML = "START!";
                 clearInterval(countdown);
                 let odliczanie = setInterval(function () {
+                    start = new Date();
                     RozpocznijQuiz();
                     clearInterval(odliczanie);
                 }, 1000);
@@ -134,13 +138,16 @@
     };
 
     function Wyniki() {
+        koniec = new Date();
+        var czas = koniec - start;
         let wynik = 0;
         for (let i = 0; i < 5; i++) {
              if (odpowiedzi_user[i] === odpowiedzi_pop[i]) {
                  wynik++;
              }
         }
-        window.location.href = '/Home/ScorePage/?nazwa=' + "@ViewBag.nazwa" + '&wynik=' + wynik;
+        window.location.href = '/Home/ScorePage/?nazwa=' + "@ViewBag.nazwa" + '&wynik=' + wynik + '&czas=' + czas;
     };
+
 
 </script>
