@@ -7,6 +7,8 @@ namespace PAzIG_Projekt.Models
 {
     public class Pytanie
     {
+        public int ID { get; set; }
+
         public string Treść { get; set; }
 
         public string A { get; set; }

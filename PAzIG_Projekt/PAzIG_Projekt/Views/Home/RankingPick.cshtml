@@ -8,14 +8,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="~/Content/Site.css">
-    <title>Medyczny Quiz</title>
+    <title>Rankingi</title>
 </head>
 <body class="tlo">
     <div class="logo_tlo_wieksze">
-        <img src="~/Images/med.png">
+        <img src="~/Images/chlopek.png">
     </div>
 
-    <p class="napis_glowny">Quizy Medyczne</p>
+    <style>
+        .logo_tlo_wieksze img:hover {
+            animation-name: sides;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+
+    <p class="napis_glowny">Ranking wyników</p>
 
     <div class="div_rzad">
         <div class="div_rzad_napis">
@@ -34,41 +42,39 @@
             <p class="napis_poboczny">Całe ciało</p>
         </div>
         <div class="div_rzad_napis">
-            <p class="napis_poboczny">Ranking</p>
+            <p class="napis_poboczny">Menu główne</p>
         </div>
     </div>
 
     <div class="div_rzad">
-        <div class="logo_tlo_mniejsze" onclick="Start('Układ krwionośny')">
+        <div class="logo_tlo_mniejsze" onclick="ZobaczRanking('Układ krwionośny')">
             <img src="~/Images/Układ krwionośny.png">
         </div>
-        <div class="logo_tlo_mniejsze" onclick="Start('Układ oddechowy')">
+        <div class="logo_tlo_mniejsze" onclick="ZobaczRanking('Układ oddechowy')">
             <img src="~/Images/Układ oddechowy.png">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/Układ nerwowy.png" onclick="Start('Układ nerwowy')">
+            <img src="~/Images/Układ nerwowy.png" onclick="ZobaczRanking('Układ nerwowy')">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/Układ kostny.png" onclick="Start('Układ kostny')">
+            <img src="~/Images/Układ kostny.png" onclick="ZobaczRanking('Układ kostny')">
         </div>
         <div class="logo_tlo_mniejsze">
-            <img src="~/Images/Całe ciało.png" onclick="Start('Całe ciało')">
+            <img src="~/Images/Całe ciało.png" onclick="ZobaczRanking('Całe ciało')">
         </div>
-        <div class="logo_tlo_mniejsze">
-            <img src="~/Images/chlopek.png" onclick="Ranking()">
+        <div class="logo_tlo_mniejsze2">
+            <img src="~/Images/med.png" onclick="Home()">
         </div>
-    </div> 
+    </div>
 </body>
 </html>
 
-<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
-
 <script>
-    function Start(nazwa) {
-        window.location.href = '/Home/QuizPage/?nazwa=' + nazwa;
+    function Home() {
+        window.location.href = '/Home/MainPage';
     }
 
-    function Ranking() {
-        window.location.href = '/Home/RankingPick';
+    function ZobaczRanking(nazwa) {
+        window.location.href = '/Home/Ranking?nazwa=' + nazwa;
     }
 </script>

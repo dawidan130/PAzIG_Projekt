@@ -55,14 +55,18 @@
         <div class="logo_tlo_mniejsze2" onclick="Home()">
             <img src="~/Images/med.png">
         </div>
-        <div class="logo_tlo_mniejsze2" onclick="">
+        <div class="logo_tlo_mniejsze2" onclick="Ranking()">
             <img src="~/Images/chlopek.png">
         </div>
     </div>
 </body>
 </html>
 
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 <script>
+    var nick = '';
+
     function check(event) {
         var input = event.target;
         var inputValue = input.value;
@@ -73,16 +77,29 @@
         window.location.href = '/Home/MainPage';
     }
 
+    function Ranking() {
+        window.location.href = '/Home/RankingPick';
+    }
+
     function Zapisz() {
-        var nick = document.getElementById("nick").value;
+
+        nick = document.getElementById("nick").value;
+        czas = "@ViewBag.czas";
 
         if (nick === "") {
             alert('Proszę podaj nick!')
         }
         else {
-            alert('Zapisano!')
-            document.getElementById('zapisz').classList.remove('div_mini');
-            document.getElementById('zapisz').classList.add('div_mini_off');
+            $.ajax({
+                method: 'POST',
+                data: { nazwa: "@ViewBag.nazwa", pseudonim: nick, wynik: @ViewBag.wynik , czas: czas },
+                url: '/Home/WyslijWyniki',
+                success: function (result) {
+                    alert('Zapisano!')
+                    document.getElementById('zapisz').classList.remove('div_mini');
+                    document.getElementById('zapisz').classList.add('div_mini_off');
+                },
+            });
         }
     }
 </script>

@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        :root {
+            --kolor: @ViewBag.kolor;
+            --animacja: @ViewBag.animacja;
+            --czasanimacji: @ViewBag.czasanimacji;
+            --timing: @ViewBag.timing;
+        }
+    </style>
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <title>Ranking - @ViewBag.nazwa</title>
+</head>
+<body class="tlo_ogolne">
+    <div class="div_rzad" style="max-width: 800px; margin: 0 auto; justify-content: center; padding-bottom: 75px">
+        <div class="logo_tlo_mniejsze2" onclick="Home()">
+            <img src="~/Images/med.png">
+            <p class="napis_poboczny" style="color: white">Menu główne</p>
+        </div>
+        <div class="logo_ogolne">
+            <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
+            <p class="napis_poboczny" style="font-size: 30px">@ViewBag.nazwa</p>
+        </div>
+        <div class="logo_tlo_mniejsze2" onclick="Ranking()">
+            <img src="~/Images/chlopek.png">
+            <p class="napis_poboczny" style="color: white">Powrót do rankingów</p>
+        </div>
+    </div>
+
+    <div class="pasek" style="width: 800px; padding-bottom: 40px">
+        <div></div>
+    </div>
+
+    <div id="wyniki">
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    function Home() {
+        window.location.href = '/Home/MainPage';
+    }
+
+    function Ranking() {
+        window.location.href = '/Home/RankingPick';
+    }
+
+    let lista_wynikow = [];
+
+    Wyniki();
+
+    function Wyniki() {
+        $.ajax({
+            method: 'GET',
+            data: { nazwa: "@ViewBag.nazwa" },
+            url: '/Home/PobierzWyniki',
+            success: function (result) {
+                for (let i = 0; i < result.length; i++) {
+                    lista_wynikow.push(result[i])
+                }
+                document.getElementById('wyniki').innerHTML = wpiszWyniki()
+            },
+        });
+    }
+
+    function wpiszWyniki() {
+        let str = '';
+
+        str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 30px">';
+        str += '<div class="ranking">Miejsce</div>';
+        str += '<div class="ranking">Pseudonim</div>';
+        str += '<div class="ranking">Wynik</div>';
+        str += '<div class="ranking">Czas</div></div>';
+
+        if (lista_wynikow.length <= 3) {
+            let maks = lista_wynikow.length;
+            for (let i = 0; i < maks; i++) {
+                x = i + 1;
+                str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 15px">';
+                str += '<div class="ranking' + x + '">' + x + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Pseudonim + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Wynik + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Czas + '</div></div>';
+            }
+        }
+        else {
+            let maks = 3;
+            for (let i = 0; i < maks; i++) {
+                x = i + 1;
+                str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 15px">';
+                str += '<div class="ranking' + x + '">' + x + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Pseudonim + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Wynik + '</div>';
+                str += '<div class="ranking' + x + '">' + lista_wynikow[i].Czas + '</div></div>';
+            }
+            for (let i = 3; i < lista_wynikow.length; i++) {
+                str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 15px">';
+                str += '<div class="ranking">' + x + '</div>';
+                str += '<div class="ranking">' + lista_wynikow[i].Pseudonim + '</div>';
+                str += '<div class="ranking">' + lista_wynikow[i].Wynik + '</div>';
+                str += '<div class="ranking">' + lista_wynikow[i].Czas + '</div></div>';
+            }
+        }
+
+        return str;
+    }
+</script>
