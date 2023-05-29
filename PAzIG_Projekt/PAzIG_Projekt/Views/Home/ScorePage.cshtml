@@ -18,18 +18,71 @@
     <link rel="stylesheet" href="~/Content/Site.css">
     <title>Quiz - @ViewBag.nazwa</title>
 </head>
-<body class="tlo_ogolne" style="text-align: center; margin: 0 auto">
+<body class="tlo_ogolne" style="text-align: center; margin: auto">
     <div class="logo_ogolne animate">
         <img src="~/Images/@(ViewBag.nazwa.Trim() + ".png")" id="obraz">
     </div>
     <div class="wynik">
-        <p> Twój wynik to: </p>
-        <p> @ViewBag.wynik na 5 punktów, czas: @(ViewBag.czas.ToString()+"s")</p>
+        <p> Wynik: @ViewBag.wynik na 5 punktów, czas: @(ViewBag.czas.ToString()+"s")</p>
     </div>
 
     <div class="emotka">
         <img src="~/Faces/@ViewBag.nazwa/@(ViewBag.wynik + ".png")">
     </div>
+
+    <div class="zapis_wyniku">
+        <div class="div_mini">
+            Podaj nick:
+        </div>
+        <div class="div_pole">
+            <input class="pole" id="nick" oninput="check(event)" maxlength="12" spellcheck="false" autocomplete="off"/>
+        </div>
+        <div id="zapisz" class="div_mini" onclick="Zapisz()">
+            Zapisz wynik!
+        </div>
+    </div>
+
+    <div class="div_rzad2">
+        <div class="div_rzad2_napis">
+            <p class="napis_poboczny">Menu główne</p>
+        </div>
+        <div class="div_rzad2_napis">
+            <p class="napis_poboczny">Ranking</p>
+        </div>
+    </div>
+
+    <div class="div_rzad2">
+        <div class="logo_tlo_mniejsze2" onclick="Home()">
+            <img src="~/Images/med.png">
+        </div>
+        <div class="logo_tlo_mniejsze2" onclick="">
+            <img src="~/Images/chlopek.png">
+        </div>
+    </div>
 </body>
 </html>
 
+<script>
+    function check(event) {
+        var input = event.target;
+        var inputValue = input.value;
+        input.value = inputValue.replace(/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, "");
+    }
+
+    function Home() {
+        window.location.href = '/Home/MainPage';
+    }
+
+    function Zapisz() {
+        var nick = document.getElementById("nick").value;
+
+        if (nick === "") {
+            alert('Proszę podaj nick!')
+        }
+        else {
+            alert('Zapisano!')
+            document.getElementById('zapisz').classList.remove('div_mini');
+            document.getElementById('zapisz').classList.add('div_mini_off');
+        }
+    }
+</script>

@@ -88,11 +88,12 @@ textarea {
 }
 
 .emotka {
-    height: 250px;
-    width: 250px;
+    height: 100px;
+    width: 100px;
     text-align: center;
     margin: 0 auto;
-    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .emotka img{
@@ -119,9 +120,8 @@ textarea {
 }
 
 .wynik {
-    height: 120px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     column-gap: 5px;
     padding: 0;
 }
@@ -130,10 +130,87 @@ textarea {
     text-align: center;
     font-size: 50px;
     margin: 5px;
+    animation: pojawienie 3s ease-in-out;
 }
 
-.wynik p:nth-of-type(2){
-    animation: pojawienie 3s ease-in-out;
+.zapis_wyniku {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 20px;
+    max-width: 700px;
+}
+
+@media (max-width: 625px) {
+    .zapis_wyniku {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.div_mini {
+    font-size: 20px;
+    height: 30px;
+    width: 150px;
+    background-color: #333333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: solid 0px;
+    border-color: var(--kolor);
+    box-shadow: 0 0 10px var(--kolor);
+    transition: box-shadow 1s ease-in-out;
+}
+
+.div_mini:hover {
+    box-shadow: 0 0 30px var(--kolor);
+}
+
+.div_mini_off {
+    font-size: 20px;
+    height: 30px;
+    width: 150px;
+    background-color: #333333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    pointer-events: none;
+}
+
+.div_pole {
+    height: 30px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.div_pole input{
+    color: var(--kolor);
+    height: 30px;
+    background-color: #333333;
+    border: 1px solid;
+    border-color: var(--kolor);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--kolor);
+    text-align: center;
+    font-family: Bahnschrift;
+    font-size: 20px;
+    transition: box-shadow 1s ease-in-out;
+}
+
+.div_pole input:focus {
+    box-shadow: 0 0 30px var(--kolor);
+    outline: none;
 }
 
 .pasek {
@@ -214,6 +291,45 @@ textarea {
 .div_rzad_napis {
     text-align: center;
     width: 16.67%;
+}
+
+.div_rzad2 {
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.div_rzad2_napis {
+    color: white;
+    text-align: center;
+    width: 50%;
+    max-width: 600px;
+}
+
+.logo_tlo_mniejsze2 {
+    background-color: #333333;
+    height: 200px;
+    width: 200px;
+    border-radius: 37.5px;
+    text-align: center;
+    margin: 0 auto;
+    border: solid 0px;
+    border-color: white;
+    box-shadow: 0 0 15px white;
+    transition: box-shadow 1s ease-in-out;
+}
+
+.logo_tlo_mniejsze2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo_tlo_mniejsze2:hover {
+    box-shadow: 0 0 30px white;
 }
 
 .div_rzad_napis:first-child {
