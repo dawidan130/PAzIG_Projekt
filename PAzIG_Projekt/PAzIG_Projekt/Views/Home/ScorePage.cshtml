@@ -8,6 +8,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <style>
+        /*Wczytanie odpowiednich zmiennych stylu*/
         :root {
             --kolor: @ViewBag.kolor;
             --animacja: @ViewBag.animacja;
@@ -27,7 +28,14 @@
     </div>
 
     <div class="emotka">
-        <img src="~/Faces/@ViewBag.nazwa/@(ViewBag.wynik + ".png")">
+        @if (ViewBag.wynik == 5 && ViewBag.czas <= 5) //Ukryta funkcjonaloność w postaci złotej emotki za uzyskanie max punktów w 5 lub mniej sekund
+        {
+            <img src="~/Faces/6.png">
+        }
+        else
+        {
+            <img src="~/Faces/@ViewBag.nazwa/@(ViewBag.wynik + ".png")">
+        }
     </div>
 
     <div class="zapis_wyniku">
@@ -35,7 +43,7 @@
             Podaj nick:
         </div>
         <div class="div_pole">
-            <input class="pole" id="nick" oninput="check(event)" maxlength="12" spellcheck="false" autocomplete="off"/>
+            <input class="pole" id="nick" oninput="check(event)" maxlength="12" spellcheck="false" autocomplete="off" />
         </div>
         <div id="zapisz" class="div_mini" onclick="Zapisz()">
             Zapisz wynik!
@@ -65,39 +73,51 @@
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>
-    var nick = '';
-
+    //Funkcja blokująca wpisywanie znaków specjalnych w nicku użytkownika
     function check(event) {
         var input = event.target;
         var inputValue = input.value;
         input.value = inputValue.replace(/[^a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, "");
     }
 
+    //Funkcja przenosząca do strony głównej
     function Home() {
         window.location.href = '/Home/MainPage';
     }
 
+    //Funkcja przenosząca do strony z rankingami
     function Ranking() {
         window.location.href = '/Home/RankingPick';
     }
 
+    //Funkcja zapisująca wynik użytkownika w bazie danych
     function Zapisz() {
-
-        nick = document.getElementById("nick").value;
+        //Pobranie nicku użytkownika
+        var nick = document.getElementById("nick").value;
+        //Zapisanie czasu jako string (tutaj miałem jakiś problem z uzyskaniem wartości zmiennoprzecinkowej, więc tu jest string potem w kontrolerze zmiana na double i wysłanie do bazy)
         czas = "@ViewBag.czas";
 
+        //Zablokowanie wysyłania pustego pseudonimu
         if (nick === "") {
-            alert('Proszę podaj nick!')
+            //Wyświetlnie informacji w przycisku o złym działaniu użytkownika na 2,5 sekundy
+            document.getElementById('zapisz').innerHTML = "&#10005; Pusty nick!";
+            let countdown = setInterval(function () {
+                //Przywrócenie starego napisu
+                document.getElementById('zapisz').innerHTML = "Zapisz wynik!";
+                clearInterval(countdown);
+            }, 2500);
         }
         else {
+            //Wysłanie wyniku do bazy danych
             $.ajax({
                 method: 'POST',
                 data: { nazwa: "@ViewBag.nazwa", pseudonim: nick, wynik: @ViewBag.wynik , czas: czas },
-                url: '/Home/WyslijWyniki',
+                url: '/Home/WyslijWyniki', //Nazwa metody w kontrolerze
                 success: function (result) {
-                    alert('Zapisano!')
+                    //Wyłączenie możliwości ponownego kliknięcia w przycisk i dodanie komunikatu w przycisku
                     document.getElementById('zapisz').classList.remove('div_mini');
                     document.getElementById('zapisz').classList.add('div_mini_off');
+                    document.getElementById('zapisz').innerHTML = "&#10004; Zapisano!";
                 },
             });
         }

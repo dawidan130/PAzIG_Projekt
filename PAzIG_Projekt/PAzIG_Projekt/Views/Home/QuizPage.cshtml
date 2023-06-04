@@ -6,8 +6,9 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
     <style>
+        /*Wczytanie odpowiednich zmiennych stylu*/
         :root {
             --kolor: @ViewBag.kolor;
             --animacja: @ViewBag.animacja;
@@ -50,54 +51,75 @@
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>
+    //Zmienna z pytaniami
     let wszystkie_pytania = [];
-    let x = 0;
+
+    //Wywołanie pobrania pytań
     GetPytania();
+
+    //Uruchomienie quizu
     Start();
 
+    //Zmienne do obliczania czasu
     var start;
     var koniec;
 
-    function Start() {
-        let counter = 3;
-        let countdown = setInterval(function () {
-            if (counter === 0) {
-                document.getElementById("tresc_pytania").innerHTML = "START!";
-                clearInterval(countdown);
-                let odliczanie = setInterval(function () {
-                    start = new Date();
-                    RozpocznijQuiz();
-                    clearInterval(odliczanie);
-                }, 1000);
-            }
-            else {
-                document.getElementById("tresc_pytania").innerHTML = counter;
-            }
-            counter--;
-        }, 1000);
-    };
-
+    //Funkcja pobierająca wszystkie pytania z bazy danych
     function GetPytania() {
         nazwa = "@ViewBag.nazwa";
         $.ajax({
             method: 'GET',
             data: { nazwa: nazwa },
-            url: '/Home/GetPytania',
+            url: '/Home/GetPytania', //Wywołanie funkcji z kontrolera
             success: function (result) {
                 for (let i = 0; i < result.length; i++) {
+                    //Przypisanie wszystkich pytań do wcześniej utworzonej zmiennej
                     wszystkie_pytania.push(result[i])
                 }
             },
         });
     };
 
+    //Funkcja uruchamiająca wyświetlanie 5 losowych pytań
+    function Start() {
+        //Licznik na stronie: 3, 2, 1 ...
+        let counter = 3;
+
+        //Uruchomienie odstępu 1s pomiędzy kolenymi cyframi odliczania
+        let countdown = setInterval(function () {
+            //Jeśli counter przejdzie 3 iteracje to wyświetlony zostanie start
+            if (counter === 0) {
+                document.getElementById("tresc_pytania").innerHTML = "START!";
+                clearInterval(countdown);
+                //Uruchomienie wyświetlania pytań
+                let odliczanie = setInterval(function () {
+                    //Zapisanie czasu startu quizu
+                    start = new Date();
+                    //Wywołanie funkcji wczytującej pytania
+                    RozpocznijQuiz();
+                    clearInterval(odliczanie);
+                }, 1000);
+            }
+            else {
+                //Wyświetlanie kolejnych cyfr odlicznaia
+                document.getElementById("tresc_pytania").innerHTML = counter;
+            }
+            //Odjęcie z licznika
+            counter--;
+        }, 1000);
+    };
+
+    //Zmienne pomocnicze
     let countdown;
     let liczba_pytan = 0;
     let odpowiedzi_user = [];
     let odpowiedzi_pop = [];
 
+    //Funkcja wyświetlająca losowo 5 pytań co 30 sekund
     function RozpocznijQuiz() {
+        //Sprawdzenie czy przeszło już 5 pytań
         if (liczba_pytan < 5) {
+            //W pierwszej iteracji następuje włączenie widoczności boxów z odpowiedziami
             if (liczba_pytan === 0) {
                 document.getElementById("dA").style.visibility = "visible";
                 document.getElementById("dB").style.visibility = "visible";
@@ -105,25 +127,35 @@
                 document.getElementById("dD").style.visibility = "visible";
             }
 
+            //Zmienna losowa oparta na długości tablicy ze wszystkimi pytaniami (1 iteracja: długość 10, w 2 itaracji: 9, w 3: 8 itd.)
             var rand = Math.floor(Math.random() * wszystkie_pytania.length);
 
+            //Wklejenie paska animowanego wraz z animacją kurczenia 30s
             document.getElementById("kontyner").innerHTML = '<div class="pasek animacja_paska" id="pasek"><div></div></div>'
 
+            //Wczytanie treści pytania oraz odpowiedzi
             document.getElementById("tresc_pytania").innerHTML = wszystkie_pytania[rand].treść;
             document.getElementById("A").innerHTML = wszystkie_pytania[rand].a;
             document.getElementById("B").innerHTML = wszystkie_pytania[rand].b;
             document.getElementById("C").innerHTML = wszystkie_pytania[rand].c;
             document.getElementById("D").innerHTML = wszystkie_pytania[rand].d;
 
+            //Zapisanie poprawnej odpowiedzi z bazy danych
             odpowiedzi_pop.push(wszystkie_pytania[rand].odp_pop);
+
+            //Usunięcie z tablicy wszystkich pytań aktualnie wylosowanego pytania (uniknięcie powtórzeń)
             wszystkie_pytania.splice(rand, 1);
+
+            //Dodanie wartości 1 licznika
             liczba_pytan++;
         }
+        //Po przejściu 5 pytań uruchomienie funkcji do wyświetlenia wyników
         else {
             clearInterval(countdown);
             Wyniki();
         }
 
+        //Jeśli użytkownik nie zaznaczy odpowiedzi zostanie wywowołana ta metoda, która sama zaznaczy odpowiedź jako pustą
         countdown = setInterval(function () {
             if (odpowiedzi_user.length < liczba_pytan) {
                 Odpowiedz('');
@@ -131,23 +163,29 @@
         }, 30000);
     };
 
+    //Funkcja zaznaczająca odpowiedź
     function Odpowiedz(odp) {
+        //Zapisanie odpowiedzi użytkownika
         odpowiedzi_user.push(odp);
         clearInterval(countdown);
+        //Zresetowanie pętli i wyświetlenie kolejnego pytania
         RozpocznijQuiz();
     };
 
+    //Funkcja zliczająca wynik, czas i przechodząca do strony z wynikami
     function Wyniki() {
+        //Zakończenie odliczania czasu quizu
         koniec = new Date();
+        //Obliczenie czasu trwania quizu
         var czas = koniec - start;
         let wynik = 0;
         for (let i = 0; i < 5; i++) {
+            //Porównywanie odpowiedzi użytkownika z odpowiedziami z bazy danych
              if (odpowiedzi_user[i] === odpowiedzi_pop[i]) {
                  wynik++;
              }
         }
+        //Przejście do strony z wynikami
         window.location.href = '/Home/ScorePage/?nazwa=' + "@ViewBag.nazwa" + '&wynik=' + wynik + '&czas=' + czas;
     };
-
-
 </script>

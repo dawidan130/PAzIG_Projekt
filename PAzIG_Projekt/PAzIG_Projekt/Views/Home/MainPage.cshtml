@@ -57,17 +57,19 @@
         <div class="logo_tlo_mniejsze">
             <img src="~/Images/chlopek.png" onclick="Ranking()">
         </div>
-    </div> 
+    </div>
 </body>
 </html>
 
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>
+    //Przeniesienie do odpowiedniego quizu
     function Start(nazwa) {
         window.location.href = '/Home/QuizPage/?nazwa=' + nazwa;
     }
 
+    //Przeniesienie do strony z rankingami
     function Ranking() {
         window.location.href = '/Home/RankingPick';
     }

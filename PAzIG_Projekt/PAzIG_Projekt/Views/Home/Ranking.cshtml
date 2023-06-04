@@ -47,42 +47,54 @@
 <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>
+    //Przeniesienie do strony głównej
     function Home() {
         window.location.href = '/Home/MainPage';
     }
 
+    //Przeniesienie do strony z wyborem rankingu
     function Ranking() {
         window.location.href = '/Home/RankingPick';
     }
 
+    //Zmienna przechowująca wyniki z bazy danych
     let lista_wynikow = [];
 
+    //Uruchomienie wyświetlenia wyników
     Wyniki();
 
+    //Funkcja pobierająca wyniki
     function Wyniki() {
         $.ajax({
             method: 'GET',
             data: { nazwa: "@ViewBag.nazwa" },
-            url: '/Home/PobierzWyniki',
+            url: '/Home/PobierzWyniki', //Wywołanie metody z kontrolera
             success: function (result) {
                 for (let i = 0; i < result.length; i++) {
+                    //Przypisanie wyników do zmiennej
                     lista_wynikow.push(result[i])
                 }
+                //Wywołanie funkcji wyświetlającej wyniki
                 document.getElementById('wyniki').innerHTML = wpiszWyniki()
             },
         });
     }
 
+    //Funkcja wyświetlająca wyniki
     function wpiszWyniki() {
+        //Zmienna przechowująca cały kod HTLM zwracany do dopowiedniego elementu
         let str = '';
 
+        //Utworzenie pierwszego rzędu z opisami kolumn
         str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 30px">';
         str += '<div class="ranking">Miejsce</div>';
         str += '<div class="ranking">Pseudonim</div>';
         str += '<div class="ranking">Wynik</div>';
         str += '<div class="ranking">Czas</div></div>';
 
+        //Jeśli w bazie danych będzie mniej niż 3 wpisy
         if (lista_wynikow.length <= 3) {
+            //Przystosowanie wyświetlania do mniej niż 3 wpisów
             let maks = lista_wynikow.length;
             for (let i = 0; i < maks; i++) {
                 x = i + 1;
@@ -94,6 +106,7 @@
             }
         }
         else {
+            //Przystosowanie pierwszych 3 wpisów, do ich odpowiednich styli (złoty, srebny, brązowy)
             let maks = 3;
             for (let i = 0; i < maks; i++) {
                 x = i + 1;
@@ -103,7 +116,9 @@
                 str += '<div class="ranking' + x + '">' + lista_wynikow[i].Wynik + '</div>';
                 str += '<div class="ranking' + x + '">' + lista_wynikow[i].Czas + '</div></div>';
             }
+            //Reszta wpisów w tym samym stylu (kolor danej kategorii)
             for (let i = 3; i < lista_wynikow.length; i++) {
+                x = i + 1;
                 str += '<div class="div_rzad2" style="max-width: 800px; padding-bottom: 15px">';
                 str += '<div class="ranking">' + x + '</div>';
                 str += '<div class="ranking">' + lista_wynikow[i].Pseudonim + '</div>';
@@ -111,7 +126,6 @@
                 str += '<div class="ranking">' + lista_wynikow[i].Czas + '</div></div>';
             }
         }
-
         return str;
     }
 </script>
